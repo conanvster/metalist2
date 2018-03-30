@@ -39,7 +39,8 @@ let all = {
         options: {
             db: {
                 safe: true
-            }
+            },
+            useMongoClient: true,
         }
     },
 

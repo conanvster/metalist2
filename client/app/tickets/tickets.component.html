@@ -1,3 +1,16 @@
-<p>
-  tickets works!
-</p>
+<div class="wrapper">
+  <h1>{{'tickets.boughtTickets' | translate}}</h1>
+  <div *ngIf="data?.length; else elseBlock">
+    <ng-scrollbar thumbClass="thumb" viewClass="scroll" barClass="thumb">
+      <ticket-section *ngFor="let ticket of data"
+                      [match]="ticket.match"
+                      [tickets]="ticket.tickets"
+                      type="tickets"
+                      (handleClick)="print($event)">
+        <span>{{'tickets.places' | translate}}:</span>
+      </ticket-section>
+    </ng-scrollbar>
+  </div>
+  <ng-template #elseBlock><h3>{{'tickets.message1' | translate}}.</h3></ng-template>
+  <home-button></home-button>
+</div>

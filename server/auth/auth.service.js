@@ -7,7 +7,13 @@ import compose from 'composable-middleware';
 import User from '../api/user/user.model';
 
 let validateJwt = expressJwt({
-  secret: config.secrets.session
+  secret: config.secrets.session,
+    getToken: function fromHeaderOrQuerystring (req) {
+        if(req.cookies && req.cookies.token) {
+            return req.cookies.token;
+        }
+        return null;
+    }
 });
 
 /**

@@ -1,0 +1,7 @@
+<ng-content></ng-content>
+<div class="list-group">
+  <list-item *ngFor="let match of matches"
+             [headline]="match.headline"
+             [edit]="type === 'next'" (editItem)="handleEdit(match)"
+             [delete]="type === 'prev'" (deleteItem)="handleDelete(match)"></list-item>
+</div>

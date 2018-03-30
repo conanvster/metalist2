@@ -1,0 +1,775 @@
+@import '../../variables';
+@import '../../mixins';
+@imgSeatsStyleBg: #60709E;
+@imgBtnInfoHover: #4d5c84;
+@txtColor: #636363;
+
+:host, .sector-wrapper {
+  display: flex;
+  width: 100%;
+}
+span {
+  color: @dark-blue;
+  text-align: center;
+  .font-size;
+}
+span.choose-place {
+  .font-size-big;
+  font-weight: 800;
+
+}
+.circle-tab-container {
+  margin: 30px auto;
+
+}
+
+.match-date, .match-time {
+  font-size: 16px;
+  font-weight: 400;
+  color: @dark-blue;
+  text-align: center;
+}
+.match-time {
+  margin-bottom: 35px;
+}
+
+.left-bar {
+  width: 25%;
+  background: @white;
+  padding: 40px 0;
+  text-align: center;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  table {
+    width: 100%;
+
+  }
+  .left-bar-header {
+    display: flex;
+    flex-direction: column;
+  }
+  ng-scrollbar {
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .tickets-wrapper {
+    margin: 0 20px;
+    background: url('../../../assets/images/tickets.png') no-repeat left;
+    background-size: contain;
+  }
+  app-summary {
+    margin: 10px 0;
+  }
+  mat-form-field {
+    margin-top: 10px;
+    .mat-select-value {
+      color: @dark-blue;
+    }
+  }
+
+  button.classic {
+    margin: 20px;
+  }
+}
+.right-bar {
+  width: 75%;
+  padding: 40px;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    .right-bar-header {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  ul {
+    width: 100%;
+    li {
+      white-space: nowrap;
+    }
+    list-style: none;
+    .number {
+      color: @dark-blue;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-block;
+      width: 33px;
+      text-align: center;
+      padding-right: 15px;
+      li {
+        line-height: 1;
+      }
+    }
+  }
+  .availableSeat,
+  .soldSeat,
+  .blockedSeat {
+    border-radius: 6px;
+    max-width: 20px;
+    height: 14px;
+    cursor: pointer;
+    //margin: 0 2px 0 0;
+    display: inline-block;
+    width: 1.5%;
+    margin-right: 0.15%;
+
+    &:hover {
+      box-shadow: 0 4px 7px rgba(0, 0, 0, 0.69);
+    }
+  }
+
+  .availableSeat {
+    background-color: #00426b;
+  }
+  .soldSeat {
+    background-color: #a2a2a2;
+  }
+  .blockedSeat {
+    background-color: #fa2c34;
+  }
+}
+@media (max-width: 1640px) {
+  .right-bar {
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      //width: 18px;
+      height: 14px;
+      border-radius: 4px;
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  :host, .sector-wrapper {
+    flex-direction: column-reverse;
+  }
+  .circle-tab-container {
+    margin: 20px auto;
+
+  }
+  .left-bar {
+    width: 100%;
+    padding: 30px;
+    & > div {
+      flex-basis: 50%;
+    }
+    .tickets-wrapper {
+      width: 450px;
+      margin: 0 auto;
+    }
+    ng-scrollbar {
+      height: 300px;
+    }
+  }
+  .right-bar {
+    width: 100%;
+    padding: 30px;
+    .header {
+      flex-direction: column;
+      align-items: center;
+    }
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      height: 12px;
+      border-radius: 4px;
+    }
+  }
+  ul {
+    .number {
+      font-size: 14px;
+      padding-right: 12px;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .circle-tab-container {
+    margin: 10px auto;
+  }
+  .right-bar {
+    ul {
+      .number {
+        font-size: 12px;
+        line-height: 1.2;
+        padding-right: 10px;
+        width: 23px;
+      }
+    }
+    .seats {
+      line-height: 1;
+      margin: 0 auto;
+    }
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      //width: 9px;
+      height: 8px;
+      margin: 0 1px 0 0;
+      border-radius: 2px;
+    }
+  }
+
+}
+
+
+@media (max-width: 640px) {
+  .left-bar {
+    padding: 20px;
+    min-width: 320px;
+    .tickets-wrapper {
+      width: 310px;
+    }
+  }
+  .right-bar {
+    padding: 20px;
+    ul {
+      .number {
+        line-height: 1.2;
+        padding-right: 8px;
+      }
+    }
+    .seats li {
+      line-height: 1;
+    }
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      //width: 5px;
+      width: 1.4%;
+      height: 8px;
+      border-radius: 1px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .left-bar {
+    .tickets-wrapper {
+      width: 280px;
+    }
+  }
+  .right-bar {
+    ul {
+      .number {
+        width: 15px;
+        font-size: 10px;
+      }
+    }
+  }
+
+}
+
+.seatMarginAll {
+  display: inline-block;
+  margin: 0 1px 0 0;
+}
+
+.blockedSeatBorders {
+  border: solid 1px #000000;
+}
+
+.cursorP {
+  cursor: pointer;
+}
+
+.cursoreD {
+  cursor: default;
+}
+
+.pointerEventsN {
+  pointer-events: none;
+}
+
+.noneListStyle {
+  list-style: none;
+}
+
+.rowdivider300 {
+  .rowdivider {
+    margin-bottom: 8px !important;
+  }
+}
+
+.rowdivider610 {
+  .rowdivider {
+    margin-bottom: 0px !important;
+  }
+}
+
+.rowdivider1280 {
+  .rowdivider {
+    margin-bottom: 14px !important;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 610px) and (orientation: portrait) {
+
+  .rowdivider300;
+
+  .imgSeatsStyle {
+    background-color: @imgSeatsStyleBg;
+    width: 4px;
+    height: 8px;
+    .cursorP;
+    .seatMarginAll;
+  }
+
+  //.blockedSeat {
+  //  background-color: @blockedSeatBg;
+  //  .cursorP;
+  //  width: 4px;
+  //  height: 8px;
+  //  .blockedSeatBorders;
+  //  .seatMarginAll;
+  //}
+
+  //.soldSeat {
+  //  width: 4px;
+  //  height: 8px;
+  //  background-color: @soldSeat;
+  //  .pointerEventsN;
+  //  .cursoreD;
+  //  .seatMarginAll;
+  //}
+
+  .address {
+    font-size: 40%;
+  }
+
+  .checkout {
+    width: 150px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .liststyle {
+    .noneListStyle;
+  }
+
+  .txt {
+    display: inline-block;
+    width: 25px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    font-size: 35%;
+    color: @txtColor;
+    .noneListStyle;
+  }
+
+  .liststyle li {
+    height: 8px;
+    margin-bottom: 1px;
+  }
+
+  .seatsMargin {
+    margin: 0;
+    width: 290px;
+    padding: 0 !important;
+  }
+
+  .rowNames {
+    width: 25px;
+    padding: 0 0 0 5px;
+    margin-top: -2px;
+  }
+
+  .hideBlock {
+    display: none;
+  }
+
+  .matchDate h3 {
+    font-size: 100%;
+  }
+
+  .matchRival h3 {
+    font-size: 100%;
+  }
+
+  .cart-item .ng-binding {
+    padding-top: 10px;
+    font-size: 80%;
+  }
+
+  .col-fixed {
+    min-width: 320px;
+  }
+
+  .colPadding {
+    min-width: 280px;
+    width: 100%;
+    max-width: 450px;
+    padding-top: 10px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 610px) and (orientation: landscape) {
+
+  .rowdivider300;
+
+  .imgSeatsStyle {
+    background-color: @imgSeatsStyleBg;
+    width: 8px;
+    height: 8px;
+    .cursorP;
+    .seatMarginAll;
+  }
+
+  //.blockedSeat {
+  //  background-color: @blockedSeatBg;
+  //  .cursorP;
+  //  width: 8px;
+  //  height: 8px;
+  //  .blockedSeatBorders;
+  //  .seatMarginAll;
+  //}
+
+  //.soldSeat {
+  //  width: 8px;
+  //  height: 8px;
+  //  background-color: @soldSeat;
+  //  .pointerEventsN;
+  //  .cursoreD;
+  //  .seatMarginAll;
+  //}
+
+  .address {
+    font-size: 40%;
+  }
+
+  .checkout {
+    width: 150px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .liststyle {
+    .noneListStyle;
+  }
+
+  .txt {
+    display: inline-block;
+    width: 25px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    font-size: 35%;
+    color: @txtColor;
+    .noneListStyle;
+  }
+
+  .liststyle li {
+    height: 8px;
+    margin-bottom: 1px;
+  }
+
+  .seatsMargin {
+    margin: 0;
+    width: 530px;
+    padding: 0 !important;
+  }
+
+  .rowNames {
+    width: 25px;
+    padding: 0 0 0 5px;
+    margin-top: -2px;
+  }
+
+  .hideBlock {
+    display: none;
+  }
+
+  .matchDate h3 {
+    font-size: 100%;
+  }
+
+  .matchRival h3 {
+    font-size: 100%;
+  }
+
+  .cart-item .ng-binding {
+    padding-top: 10px;
+    font-size: 80%;
+  }
+
+  .col-fixed {
+    min-width: 300px;
+  }
+
+  .colPadding {
+    min-width: 110px;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 611px) and (max-width: 1280px) {
+
+  .rowdivider610;
+
+  .imgSeatsStyle {
+    background-color: @imgSeatsStyleBg;
+    width: 8px;
+    height: 8px;
+    .cursorP;
+    .seatMarginAll;
+  }
+
+  //.blockedSeat {
+  //  background-color: @blockedSeatBg;
+  //  width: 8px;
+  //  height: 8px;
+  //  .cursorP;
+  //  .blockedSeatBorders;
+  //  .seatMarginAll;
+  //}
+  //
+  //.soldSeat {
+  //  width: 8px;
+  //  height: 8px;
+  //  background-color: @soldSeat;
+  //  .pointerEventsN;
+  //  .cursoreD;
+  //  .seatMarginAll;
+  //}
+
+  ul.rows li:before {
+    margin: 0;
+    padding: 0;
+  }
+
+  .address {
+    font-size: 50%;
+  }
+
+  .checkout {
+    width: 150px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .liststyle {
+    .noneListStyle;
+  }
+
+  .txt {
+    display: inline-block;
+    width: 35px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    font-size: 70%;
+    color: @txtColor;
+    .noneListStyle;
+  }
+
+  .liststyle li {
+    margin-bottom: -11px;
+  }
+
+  .seatsMargin {
+    width: 540px;
+    padding: 0 !important;
+  }
+
+  .rowNames {
+    width: 55px;
+    padding-right: 0 !important;
+  }
+
+  .hideBlock {
+    display: none;
+  }
+
+  .cart-item .ng-binding {
+    padding-top: 10px;
+    font-size: 80%;
+  }
+
+  .col-fixed {
+    min-width: 320px;
+  }
+
+  .colPadding {
+    min-width: 100px;
+  }
+
+  .cardBlock {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 4096px) {
+
+  .rowdivider1280;
+
+  .imgSeatsStyle {
+    background-color: @imgSeatsStyleBg;
+    width: 14px;
+    height: 14px;
+    .cursorP;
+    .seatMarginAll;
+  }
+
+  //.blockedSeat {
+  //  background-color: @blockedSeatBg;
+  //  width: 14px;
+  //  height: 14px;
+  //  .cursorP;
+  //  border: solid 2px #000000;
+  //  .seatMarginAll;
+  //}
+  //
+  //.soldSeat {
+  //  width: 14px;
+  //  height: 14px;
+  //  background-color: @soldSeat;
+  //  .pointerEventsN;
+  //  .cursoreD;
+  //  .seatMarginAll;
+  //}
+
+  .address {
+    font-size: 0.8vw;
+  }
+
+  .liststyle {
+    .noneListStyle;
+  }
+
+  .txt {
+    display: inline-block;
+    width: 45px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    font-size: 90%;
+    color: @txtColor;
+    .noneListStyle;
+  }
+
+  .liststyle li {
+    margin-bottom: -5px;
+  }
+
+  .seatsMargin {
+    padding: 0 !important;
+  }
+
+  .rowNames {
+    width: 65px;
+    margin-top: -2px;
+    padding-right: 0 !important;
+  }
+
+  .cart-item .ng-binding {
+    padding-top: 10px;
+    font-size: 90%;
+  }
+
+  .col-fixed {
+    min-width: 320px;
+  }
+
+  .colPadding {
+    min-width: 240px;
+  }
+
+  .cardBlock {
+    margin-top: 10px;
+  }
+
+  .row-centered {
+    text-align: center;
+  }
+}
+
+.imgSeatsStyle:hover {
+  -webkit-transition-duration: 0.1ms;
+  -moz-transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+  -webkit-filter: drop-shadow(0px 0px 5px #ffffff);
+  filter: drop-shadow(0px 0px 5px #ffffff);
+}
+
+.gradientSeats {
+  margin: 5px 0 5px 0;
+  width: 100%;
+  height: 1px;
+  background: radial-gradient(circle, rgba(133, 133, 133, 0.68), rgba(75, 75, 75, 0));
+}
+
+.content-main,
+.top-timeline-tweetbox {
+  float: right;
+  position: absolute;
+  width: 880px;
+}
+
+/*skipping seats*/
+#s14011, #s2191, #s2192, #s2193, #s2194, #s2195,
+#s2171, #s2172, #s2173, #s2174, #s2175,
+#s2181, #s2182, #s2183, #s2184, #s2185 {
+  visibility: hidden;
+}
+
+.battonSectores {
+  width: 100px;
+  margin: auto;
+}
+
+.backBtn {
+  display: table;
+  margin: 0 auto;
+}
+
+[uib-popover-popup].popover,
+[uib-popover-html-popup].popover,
+[uib-popover-template-popup].popover {
+  display: block !important;
+  border-radius: 10px !important;
+}
+
+.popover p {
+  color: @txtColor;
+  font-size: 1em;
+  margin: 0 0 0 0 !important;
+}
+
+ul {
+  padding: 0;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+  outline: 0 none;
+}
+
+.col12Padding {
+  padding: 0;
+}
+
+.rowPadding {
+  margin: 0;
+}
+
+.row {
+  max-width: 960px;
+  margin: 0 auto;
+}

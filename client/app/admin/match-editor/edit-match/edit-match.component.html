@@ -1,0 +1,67 @@
+<label *ngIf="match?.id; else elseTitle">{{'admin.editMatch' | translate}}</label>
+<ng-template #elseTitle>
+  <label>{{'admin.newMatch' | translate}}</label>
+</ng-template>
+<form class="example-container">
+
+  <mat-form-field *ngIf="match?.id">
+    <input matInput type="text" placeholder="Match id" name="matchId" [value]="match?.id" disabled>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" [placeholder]="'placeholder.rival' | translate"
+           [(ngModel)]="match.rival" name="rival">
+  </mat-form-field>
+
+  <div class="form-group">
+    <label>Герб</label>
+
+    <div class="teamLogos">
+      <img [src]="match.poster" alt="">
+    </div>
+
+    <mat-form-field>
+      <mat-select [(ngModel)]="match.poster" name="logo" [placeholder]="'placeholder.emblem' | translate">
+        <mat-option *ngFor="let logo of teamLogos" [value]="path + logo">
+          {{ logo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="btn-group">
+      <label class="btn btn-default">{{'admin.addNewEmblem' | translate}}
+        <input type="file" id="file" name="file" (change)="handleFileInput($event)" style="display: none;">
+      </label>
+    </div>
+  </div>
+  <mat-form-field>
+    <textarea matInput [placeholder]="'placeholder.description' | translate"
+              name="info" [(ngModel)]="match.info" matAutosizeMinRows="4"></textarea>
+  </mat-form-field>
+  <div class="date-time">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker"
+             [placeholder]="'placeholder.dateTime' | translate" [(ngModel)]="match.date" name="date" >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="time" [value]="this.match.date | localeDate:'HH:mm'" (input)="handleTimeInput($event)"
+             name="time"/>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <mat-select [(ngModel)]="match.priceSchema" name="schema" [compareWith]="setSelectedOption">
+      <mat-option *ngFor="let schema of priceSchemas" [value]="schema">
+        {{schema.priceSchema.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" class="btn btn-default" (click)="saveMatch()">
+    <span *ngIf="match?.id; else elseButton">{{'admin.save' | translate}}</span>
+    <ng-template #elseButton>
+      <span>{{'admin.add' | translate}}</span>
+    </ng-template>
+  </button>
+  <button class="btn btn-default" (click)="close()">{{'admin.close' | translate}}</button>
+</form>

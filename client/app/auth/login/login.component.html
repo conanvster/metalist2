@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <shared-form [type]="'login'"
+               (submit)="login($event)">
+    <span class="title">{{'auth.entrance' | translate}}</span>
+    <span *ngIf="error === 'fail'; else elseBlock" class="error">
+      {{('message.login.' + error) | translate}}
+    </span>
+    <ng-template #elseBlock>
+      <span class="error">{{error | translate}}</span>
+    </ng-template>
+    <span class="redirect">
+      {{'auth.forgotPassword' | translate}}?
+      <a routerLink="/recovery">{{'auth.restore' | translate}}</a>
+    </span>
+    <!--<button type="submit" class="classic">-->
+      <span class="button-title"> {{'auth.entrance' | translate}} </span>
+    <!--</button>-->
+  </shared-form>
+
+  <oauth-buttons></oauth-buttons>
+  <span class="registration">
+    {{'auth.dontHaveAccount' | translate}}?
+    <a routerLink="/register">{{"auth.registration" | translate | uppercase}}</a>
+  </span>
+  <home-button></home-button>
+</div>

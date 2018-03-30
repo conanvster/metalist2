@@ -1,0 +1,84 @@
+@import '../variables';
+@import '../mixins';
+
+:host {
+  display: flex;
+}
+
+.wrapper {
+  width: 720px;
+  padding: 0;
+  justify-content: space-between;
+  span {
+    color: #123f6d;
+    .font-size-small;
+  }
+  span.ordering {
+    .font-size-big;
+    font-weight: 800;
+    margin: 0 0 35px;
+  }
+  span.no-ticket {
+    .font-size(30px);
+  }
+  div {
+    width: 100%;
+  }
+  .summary-container {
+    padding-right: 60px;
+  }
+}
+ticket-section span {
+  display: flex;
+  justify-content: center;
+  .font-size(18px);
+  font-weight: 600;
+  color: @dark-blue;
+  margin: 50px 0 40px;
+  @media (max-width: 960px) {
+    margin: 40px 0 30px;
+  }
+  @media (max-width: 720px) {
+    font-size: 14px;
+    margin: 30px 0 20px;
+  }
+  @media (max-width: 600px) {
+    font-size: 14px;
+    margin: 20px 0 10px;
+  }
+}
+
+ng-scrollbar {
+  height: 500px;
+  //margin-bottom: 50px;
+  //width: 100%;
+}
+@media (max-width: 720px) {
+  .wrapper {
+    width: 100%;
+    div {
+      padding: 0 20px;
+    }
+    span.ordering {
+      margin: 0 0 25px;
+    }
+  }
+  //ng-scrollbar {
+  //  margin-bottom: 40px;
+  //}
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    div {
+      padding: 0;
+    }
+    span.ordering {
+      margin: 0 0 15px;
+    }
+  }
+  //ng-scrollbar {
+  //  margin-bottom: 30px;
+  //}
+}
+

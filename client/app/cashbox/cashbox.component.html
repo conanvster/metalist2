@@ -1,3 +1,8 @@
-<p>
-  cashbox works!
-</p>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="active" routerLink="daysStatistic"><a>{{'cashbox.message1' | translate}}</a></li>
+    <li routerLinkActive="active" routerLink="lastTickets"><a>{{'cashbox.message2' | translate}}</a></li>
+    <li routerLinkActive="active" routerLink="abonementTicket"><a>{{'cashbox.message3' | translate}}</a></li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

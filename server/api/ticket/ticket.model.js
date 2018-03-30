@@ -50,6 +50,10 @@ const TicketSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  freeMessageStatus: {
+    type: String,
+    default: null
+  },
 });
 
 export default mongoose.model('Ticket', TicketSchema);

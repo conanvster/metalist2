@@ -1,0 +1,27 @@
+<hr>
+<table class="table table-hover">
+  <thead class="thead-inverse">
+  <tr>
+    <th>Матч</th>
+    <th>Дата</th>
+    <th>{{'admin.userType' | translate}}</th>
+    <th>{{'common.quantity' | translate}}</th>
+    <th>{{'common.amount' | translate}}</th>
+    <th>{{'admin.sectorDetails' | translate}}</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let stat of eventStatistics" >
+    <tr *ngFor="let day of stat">
+      <td>{{day.headline}}</td>
+      <td>{{day.date | date: 'dd-MM-yyyy HH:mm'}}</td>
+      <td>{{day.cashier}}</td>
+      <td>{{day.count}}</td>
+      <td>{{day.sum}}</td>
+      <td>
+        <ul>
+          <li *ngFor="let detail of sortBySector(day.details)">{{detail.sector}} - {{detail.count}} шт.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

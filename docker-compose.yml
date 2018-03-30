@@ -8,7 +8,7 @@ services:
             - "80:8080"
             - "465:465"
         volumes:
-            - ./images/teamLogos:/app/client/assets/teamLogos
+            - ./client/assets/images/teamLogo:/app/client/assets/teamLogo
         links:
             - mongo
         env_file: .env

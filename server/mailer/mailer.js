@@ -43,8 +43,8 @@ export function sendMailTemporaryPassword(to, password) {
     mailOptions = {
       from: to,
       to: to,
-      subject: 'Temporary guest password',
-      text: 'Ваш временный пароль  ' + password
+      subject: 'Тимчасовий пароль',
+      text: 'Ваш тимчасовий пароль ' + password
     };
 
   transport.sendMail(mailOptions, (error) => {

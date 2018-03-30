@@ -1,0 +1,47 @@
+@import '../../mixins';
+@import '../../variables';
+
+tr.ticket-item-wrapper {
+  padding: 5px 10px 5px 0;
+  width: 100%;
+  display: block;
+
+  td {
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+    padding-right: 5px;
+    .font-size;
+    font-weight: 400;
+    color: @dark-blue;
+  }
+  .text-container {
+    text-align: left;
+  }
+  .symbol {
+    cursor: pointer;
+  }
+}
+.indicator {
+  width: 20px;
+  height: 13px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0;
+  padding-right: 10px;
+  @media (max-width:  420px) {
+    margin: 0 10px 0 0;
+  }
+}
+span:first-child {
+  text-transform: capitalize;
+}
+i {
+  .font-size(24px);
+
+  &.fa-times {
+    color: #fc2c34;
+  }
+}

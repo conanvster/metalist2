@@ -1,0 +1,76 @@
+.address {
+  margin: 20px 0 0 0;
+}
+
+.matchData {
+  padding: 10px 15px 20px 20px;
+}
+
+.matchData > .col-xs-4:last-child {
+  text-align: right;
+  font-size: 14px;
+
+}
+
+.matchData > div {
+  padding: 0;
+  &:nth-child(1n) {
+    font-size: 18px;
+  }
+  &:nth-child(2n) {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    & span {
+      padding: 0;
+
+      &:nth-child(2n) {
+        display: none;
+      }
+    }
+  }
+  &:nth-child(3n) {
+    font-size: 14px;
+    font-style: italic;
+    text-align: right;
+    & > div {
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .matchData > div {
+    text-align: center;
+    padding: 0;
+    &:nth-child(1n) {
+      font-size: 16px;
+
+    }
+    &:nth-child(2n) {
+      font-size: 22px;
+      white-space: nowrap;
+      & span {
+        white-space: nowrap;
+        &:nth-child(2n) {
+          display: inline;
+        }
+      }
+    }
+    &:nth-child(3n) {
+      font-size: 12px;
+      text-align: center;
+      & > div {
+        &:nth-child(1n) {
+          text-align: right;
+        }
+        &:nth-child(2n) {
+          text-align: left;
+        }
+        &:nth-child(3n) {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

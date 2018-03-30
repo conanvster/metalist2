@@ -1,0 +1,132 @@
+@import '../../variables';
+
+:host {
+  width: 100%;
+}
+
+:host /deep/ .title {
+    text-align: center;
+    font-size: 32px;
+    color: @dark-blue;
+    font-weight: 800;
+    text-transform: uppercase;
+
+}
+
+:host /deep/ .redirect {
+  color: #999999;
+  font-size: 16px;
+  text-align: left;
+  padding: 0 5px;
+  margin-bottom: 100px;
+  a {
+    color: #999999;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+}
+
+:host /deep/ .classic {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+:host /deep/ .error {
+  text-align: center;
+  height: 20px;
+  padding: 0 5px;
+  color: #999999;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+:host /deep/ .confirmation-email-notification {
+  text-align: center;
+  height: 20px;
+  padding: 0 5px;
+  color: #999999;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.error {
+  height: 20px;
+}
+
+div * {
+  width: 100%;
+}
+
+input {
+  padding: 14px;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.09);
+  border: 1px solid @input-border;
+  background-color: @white;
+  color: @input-text;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: @gray-placeholder;
+  }
+}
+
+@media (max-width: 960px) {
+  input {
+    font-size: 20px;
+  }
+  :host /deep/ .title {
+    font-size: 28px;
+  }
+  .errors {
+    font-size: 13px;
+  }
+
+  :host /deep/ .redirect, :host /deep/ .error {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  input {
+    font-size: 16px;
+  }
+  :host /deep/ .title {
+    font-size: 24px;
+  }
+  .errors {
+    font-size: 12px;
+  }
+  :host /deep/ .redirect, :host /deep/ .error {
+    font-size: 14px;
+  }
+}
+.checkbox-container {
+  align-items: center;
+  display: flex;
+  input[type="checkbox"] {
+    margin: 5px 10px;
+    border: 1px solid @gray-placeholder;
+    width: auto;
+  }
+  span {
+    text-align: left;
+    color: #999999;
+    font-size: 16px;
+    font-weight: 300;
+  }
+}
+
+div:first-child input {
+  margin: 40px 0 0;
+}
+.errors {
+  height: 20px;
+  text-align: left;
+  padding: 0 5px;
+  color: #999999;
+  font-size: 14px;
+}
+

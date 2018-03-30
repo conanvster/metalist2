@@ -47,6 +47,7 @@ export function create(req, res, next) {
   newUser.role = 'user';
   newUser.save()
     .then(function (user) {
+      console.log('===create', user);
       let token = jwt.sign({_id: user._id}, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
@@ -149,7 +150,6 @@ export function generatePassword(req, res, next) {
   let email = String(req.body.email),
     password = passwordGenerator.generatePassByMail(),
     newUser = {};
-
   return User.findOne({email: email}).exec()
     .then(user => {
       if (user && user.name) {
@@ -170,7 +170,7 @@ export function generatePassword(req, res, next) {
       then((newUser) => {
           Mailer.sendMailTemporaryPassword(newUser.email, password);
 
-          return res.status(200).json({message: 'На ваш email был выслан временный пароль.'});
+          return res.status(200).json({message: 'auth.temporaryPassword'});
         }
       )
         .catch(() => {

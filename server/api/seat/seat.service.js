@@ -91,19 +91,9 @@ export function createSeatsForMatch(match) {
     });
 }
 
-export function deletePrevMatchSeats(seats, matchId) {
+export function deleteByMatchId(matchId) {
   console.log("-----------------------/// delete seats for previous match: ", matchId);
-
-  let parameters = [];
-  seats.forEach(seat => {
-    parameters.push({matchId: seat.match})
-  });
-  return Promise.map(parameters, function({matchId}) {
-    return removeSeatByMatchId(matchId);
-  }, {concurrency: 1}).then(function() {
-    return "done";
-  });
-
+  return Seat.deleteMany({match: matchId})
 }
 
 // private function

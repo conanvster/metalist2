@@ -1,0 +1,8 @@
+<div>
+  <!--<label>Удалить матч</label>-->
+  <ng-content select="label"></ng-content>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="Id" [(ngModel)]="itemId">
+  </mat-form-field>
+  <button class="btn btn-default" (click)="handleClick()" [disabled]="!itemId">{{'admin.delete' | translate}}</button>
+</div>

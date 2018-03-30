@@ -1,0 +1,23 @@
+.browserupgrade {
+  margin: 0.2em 0;  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.tooltips {
+  background: white;
+  color: #636363;
+  line-height: 1;
+  font-size: 12px;
+  padding: 5px;
+  text-align: left;
+  position: absolute;
+  top: -65px;
+  left: -40px;
+  white-space: nowrap;
+  display: none;
+  width: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}

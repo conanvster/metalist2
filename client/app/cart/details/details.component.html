@@ -1,0 +1,17 @@
+<div *ngIf="!seats || !seats.length" class="empty">{{'checkout.notOrderedTickets' | translate}}</div>
+<table class="cart-items table table-condensed">
+  <tr class="cart-item" *ngFor="let seat of seats">
+    <td class="text-left">
+      {{seat.match.headline}}, {{seat.match.date | localeDate}}, {{ seat.sector }} сектор,
+      {{ seat.row }} ряд, {{ seat.seat }} {{'common.place' | translate | lowercase}}
+    </td>
+    <td class="price">
+      {{ seat.price }}грн.
+    </td>
+    <td>
+      <button class="btn btn-danger btn-xs" (click)="removeSeat(seat.slug, seat.match.id)">
+        <i class="fa fa-times"></i>
+      </button>
+    </td>
+  </tr>
+</table>

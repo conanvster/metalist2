@@ -13,7 +13,9 @@ export function index(req, res) {
 }
 
 export function savePriceSchema(req, res) {
-  let priceSchema = req.body.schema;
+  console.log('savePriceSchema', req.body);
+  let priceSchema = req.body;
+  console.log('savePriceSchema', priceSchema);
   PriceSchema.findById(priceSchema.id)
     .then((price)  => {
       if (!price) {

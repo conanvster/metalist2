@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <shared-form [type]="'settings'"
+               (submit)="changePassword($event)">
+    <span class="title">{{'auth.change' | translate}} пароль</span>
+    <span class="error" *ngIf="message">{{('message.settings.' + message) | translate}}</span>
+    <span class="button-title"> {{'auth.saveChanges' | translate}} </span>
+  </shared-form>
+</div>

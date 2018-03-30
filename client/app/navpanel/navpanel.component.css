@@ -1,0 +1,299 @@
+.crumbs .crm a,
+.crumbs .crmdis a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+/** breadcrumbs landscape **/
+@media (min-width: 1281px) and (max-width: 4096px) and (orientation: landscape) {
+
+  .cr {
+    margin-left: 2px;
+  }
+
+  .crumbs {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    width: 19.4%;
+
+  }
+
+  .crumbs span:nth-child(4) a {
+    padding-left: 10px;
+  }
+
+
+  .crumbs .crmdis a {
+    width: 19.4%;
+  }
+
+}
+
+@media (min-width: 721px) and (max-width: 1280px) and (orientation: landscape) {
+
+  .cr {
+    margin-left: 1px;
+  }
+
+  .crumbs {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    width: 19.2%;
+    padding: 0 0 0 30px;
+  }
+
+  .crumbs .crmdis a {
+    width: 19.2%;
+    padding: 0 0 0 30px;
+  }
+}
+
+@media (min-width: 326px) and (max-width: 720px) and (orientation: landscape) {
+
+  .cr {
+    display: flex;
+    justify-content: center;
+  }
+
+  .crumbs {
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    height: 30px;
+    width: 18.5%;
+    padding: 0 0 0 20px;
+    font-size: 12px;
+  }
+
+  .crumbs .crmdis a {
+    height: 30px;
+    width: 18.5%;
+    padding: 0 0 0 20px;
+    font-size: 12px;
+  }
+
+}
+
+.crumbs .crm a {
+  text-align: center;
+  float: left;
+  height: 60px;
+  background: #ffcc00;
+  position: relative;
+  margin: 0 5px 5px 0;
+  text-decoration: none;
+  color: #212121;
+}
+
+.crumbs .crmdis a {
+  text-align: center;
+  float: left;
+  height: 60px;
+  background: #bcbcbc;
+  position: relative;
+  margin: 0 5px 5px 0;
+  text-decoration: none;
+  color: #212121;
+}
+
+.crumbs .crm a:after {
+  display: inline-block;
+  content: "";
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 20px solid #ffcc00;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  z-index: 1;
+}
+
+.crumbs .crmdis a:after {
+  display: inline-block;
+  content: "";
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 20px solid #bcbcbc;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  z-index: 1;
+}
+
+.crumbs .crm a:before {
+  display: inline-block;
+  content: "";
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 20px solid #ffffff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.crumbs .crmdis a:before {
+  display: inline-block;
+  content: "";
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 20px solid #ffffff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.crumbs .crm:first-child a {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.crumbs .crm:first-child a:before {
+  display: none;
+}
+
+.crumbs .crm:last-child a {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.crumbs .crm:last-child a:after {
+  display: none;
+}
+
+.crumbs .crmdis:first-child a {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.crumbs .crmdis:last-child a {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.crumbs .crmdis:last-child a:after {
+  display: none;
+}
+
+.crumbs .crm a:hover {
+  background: #ffa900;
+}
+
+.crumbs .crm a:hover:after {
+  border-left-color: #ffa900;
+}
+
+/** breadcrumbs portrait **/
+
+@media (min-width: 1281px) and (max-width: 4096px) and (orientation: portrait) {
+
+  .cr {
+    margin-left: 2px;
+  }
+
+  .crumbs {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    width: 19.4%;
+  }
+
+  .crumbs .crmdis a {
+    width: 19.4%;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1280px) and (orientation: portrait) {
+
+  .cr {
+    margin-left: 1px;
+  }
+
+  .crumbs {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    width: 19.2%;
+    padding: 0 0 0 30px;
+  }
+
+  .crumbs .crmdis a {
+    width: 19.2%;
+    padding: 0 0 0 30px;
+  }
+}
+
+@media (min-width: 326px) and (max-width: 720px) and (orientation: portrait) {
+
+  .cr {
+    display: flex;
+    justify-content: center;
+  }
+
+  .crumbs {
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    line-height: 15px;
+    width: 18.5%;
+    padding: 0 0 0 20px;
+    font-size: 12px;
+  }
+
+  .crumbs .crmdis a {
+    line-height: 15px;
+
+    width: 18.5%;
+    padding: 15px 0 0 20px;
+    font-size: 12px;
+  }
+
+  .crumbs .crmdis a:last-child {
+    padding: 0 0 0 20px;
+  }
+}
+
+@media (min-width: 256px) and (max-width: 325px) and (orientation: portrait) {
+
+  .cr {
+    display: flex;
+    justify-content: center;
+  }
+
+  .crumbs {
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .crumbs .crm a {
+    width: 18%;
+    padding: 0 0 0 30px;
+    font-size: 12px;
+  }
+
+  .crumbs .crmdis a {
+    width: 18%;
+    padding: 0 0 0 30px;
+    font-size: 12px;
+  }
+
+
+}

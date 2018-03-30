@@ -1,34 +1,56 @@
-<div class="navbar navbar-inverse navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">METALIST 1925 TICKETS</a>
-    </div>
-    <div id="navbar-main" uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-
-        <!--<li ng-repeat="item in $ctrl.menu" ui-sref-active="active"><a ui-sref="{{item.state}}">{{item.title}}</a></li>-->
-        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="main.tickets">Мои билеты</a></li>
-        <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
-        <li ng-show="$ctrl.isCashier()" ui-sref-active="active"><a ui-sref="cashbox">Касса</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">РЕГИСТРАЦИЯ</a></li>
-        <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">ВХОД</a></li>
-        <!--<li ng-show="$ctrl.isLoggedIn()">-->
-          <!--<p class="navbar-text">Привет {{ $ctrl.getCurrentUser().name }}</p>-->
-        <!--</li>-->
-        <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span
-          class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Выход</a></li>
-
+<div class="header">
+  <div class="inner-wrapper">
+    <div class="logo-header">
+      <ul>
         <li>
-          <!--<cart-summary></cart-summary>-->
+          <a routerLink="">
+            <img src="assets/images/main-logo.png" alt="header logo">
+            <span>METALIST 1925 TICKETS</span>
+          </a>
+        </li>
+        <li (click)="toggleMenu()" [style.display]="isMobile ? 'flex' : 'none'">
+          <span><i class="fa fa-bars"></i></span>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-header" [style.display]="isCollapsed ? 'flex' : 'none'">
+      <ul *ngIf="isLoggedIn">
+        <li *ngIf="!isCashier()">
+          <a routerLinkActive="active" routerLink="tickets">{{'navbar.myTickets' | translate | uppercase}}</a>
+        </li>
+        <li *ngIf="isAdmin()" >
+          <a routerLinkActive="active" routerLink="admin">Admin</a>
+        </li>
+        <li *ngIf="isAdmin() || isCashier()">
+          <a routerLinkActive="active" routerLink="cashbox">{{'navbar.cashBox' | translate | uppercase}}</a>
+        </li>
+      </ul>
+      <ul>
+        <li *ngIf="!isLoggedIn">
+          <a routerLinkActive="active" routerLink="register">
+            {{'navbar.registration' | translate | uppercase}}
+          </a>
+        </li>
+        <li *ngIf="!isLoggedIn">
+          <a routerLinkActive="active" routerLink="login">
+            {{'navbar.entrance' | translate | uppercase}}
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn && !isMobile" class="user-name">
+          <span>
+            {{'navbar.hello' | translate | uppercase}}, {{ currentUser?.name | uppercase}}
+          </span>
+        </li>
+        <li *ngIf="isLoggedIn && !loggedInWithOauth">
+          <a routerLinkActive="active" routerLink="settings">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li *ngIf="isLoggedIn">
+          <a routerLinkActive="active" routerLink="login">{{'navbar.exit' | translate | uppercase}}</a>
+        </li>
+        <li>
+          <a routerLinkActive="active" routerLink="checkout">{{'navbar.basket' | translate | uppercase}}</a>
         </li>
       </ul>
     </div>

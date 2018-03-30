@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <shared-form [type]="'recovery'"
+               (submit)="recover($event)">
+    <span class="title">{{'auth.message5' | translate}}</span>
+    <span class="error" *ngIf="message">{{message}}</span>
+    <span class="button-title"> {{'auth.recoverPassword' | translate}} </span>
+  </shared-form>
+</div>

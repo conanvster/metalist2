@@ -1,0 +1,42 @@
+<ng-content select=".title"></ng-content>
+<form name="form" class="form" [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <div *ngFor="let field of fields">
+    <div *ngIf="field === 'subscribeNews'; else elseBlock" class="checkbox-container">
+      <input *ngIf="field === 'subscribeNews'" type="checkbox" id="subscribeNews"
+             name="subscribeNews" formControlName="subscribeNews">
+      <span *ngIf="field === 'subscribeNews'">{{'placeholder.subscribeNews' | translate}}</span>
+    </div>
+    <ng-template #elseBlock>
+      <input [placeholder]="'placeholder.' + field | translate"
+             [type]="getInputType(field)"
+             [name]="field"
+             [id]="field"
+             [formControlName]="field"
+             [style.display]="field === 'password' && type === 'email-confirmation' && hide ? 'none' : 'block'"
+             (focus)="handleFocus()">
+    </ng-template>
+    <div class="errors">
+      <input-invalid-email-error
+        *ngIf="getInputError(field).includes('email') && !getInputError(field).includes('required')">
+      </input-invalid-email-error>
+      <input-required-error *ngIf="getInputError(field).includes('required')"
+                            [field]="'placeholder.' + field | translate">
+      </input-required-error>
+      <span *ngIf="field === 'confirmPassword' && form.hasError('mismatchedPasswords') &&
+        form.get('confirmPassword').touched">
+        {{'auth.passwords' | translate}} <strong>{{'auth.notMatch' | translate}}</strong>
+      </span>
+    </div>
+    <div *ngIf="field=== 'email'">
+      <ng-content select=".confirmation-email-notification"></ng-content>
+    </div>
+
+  </div>
+  <ng-content select=".redirect"></ng-content>
+  <div class="error" [style.visibility]="showError ? 'visible' : 'hidden'">
+    <ng-content select=".error"></ng-content>
+  </div>
+  <button type="submit" class="classic">
+    <ng-content select=".button-title"></ng-content>
+  </button>
+</form>

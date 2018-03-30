@@ -1,0 +1,199 @@
+@import '../../variables';
+@import '../../mixins';
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  background: @white;
+  padding: 40px;
+  min-width: 400px;
+  max-width: 465px;
+  text-align: center;
+}
+.desktop {
+  width: 100%;
+}
+.sector.desktop {
+  display: block;
+  text-align: center;
+
+}
+.sector.mobile, .mobile {
+  display: none;
+  text-align: center;
+}
+
+.match-date, .match-time {
+  color: @dark-blue;
+  .font-size-big;
+  text-align: center;
+  font-weight: 800;
+}
+
+.match-time {
+  margin-bottom: 50px;
+}
+
+.match-metalist, .match-rival {
+  position: relative;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .font-size(24px);
+  color: @dark-blue;
+  font-weight: 700;
+
+  span {
+
+    padding: 0 30px;
+    overflow: hidden;
+  }
+
+}
+
+.match-metalist {
+  margin-left: 70px;
+  background: linear-gradient(to right, @gray, @white);
+  padding: 0 0 0 70px;
+}
+
+.match-rival {
+  margin-right: 70px;
+  background: linear-gradient(to left, @gray, @white);
+  padding: 0 70px 0 0;
+  margin-bottom: 50px;
+  span {
+    max-height: 110px;
+    .line-clamp(3);
+  }
+}
+
+.match-vs {
+  text-align: center;
+  .font-size-big(45px);
+  font-weight: 300;
+  color: @dark-blue;
+  padding: 30px;
+}
+
+.match-address {
+  color: @dark-blue;
+  .font-size-small;;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+@media (max-width: 1240px) {
+
+  .match-time {
+    margin-bottom: 40px;
+  }
+  .match-metalist, .match-rival {
+    height: 130px;
+    span {
+      padding: 0 20px;
+    }
+  }
+  .match-metalist {
+    margin-left: 60px;
+    padding: 0 0 0 60px;
+  }
+  .match-rival {
+    margin-right: 60px;
+    padding: 0 65px 0 0;
+    margin-bottom: 40px;
+  }
+
+  .match-vs {
+    padding: 20px;
+  }
+
+  .sector.desktop {
+    display: none;
+  }
+
+  .sector.mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 960px) {
+  .card-wrapper {
+    padding: 30px 40px;
+  }
+  .match-time {
+    margin-bottom: 30px;
+  }
+  .match-metalist, .match-rival {
+    height: 120px;
+    span {
+      padding: 0 10px;
+    }
+  }
+  .match-metalist {
+    margin-left: 50px;
+    padding: 0 0 0 50px;
+  }
+  .match-rival {
+    margin-right: 50px;
+    padding: 0 60px 0 0;
+    margin-bottom: 30px;
+    span {
+      max-height: 100px;
+    }
+  }
+  .match-vs {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 860px) {
+  .card-wrapper {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .card-wrapper {
+    min-width: auto;
+  }
+  .match-rival {
+    span {
+      max-height: 90px;
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .match-rival {
+    span {
+      max-height: 80px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .card-wrapper {
+    padding: 20px;
+  }
+
+  .match-metalist, .match-rival {
+    height: 110px;
+  }
+  .match-metalist {
+    margin-left: 40px;
+    padding: 0 0 0 40px;
+  }
+  .match-rival {
+    margin-right: 40px;
+    padding: 0 55px 0 0;
+    margin-bottom: 20px;
+  }
+
+}

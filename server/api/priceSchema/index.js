@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.view);
-router.put('/:id', auth.hasRole('admin'), controller.savePriceSchema);
+router.put('/:id', controller.savePriceSchema);
 router.delete('/:id', auth.hasRole('admin'), controller.deletePrice);
 
 

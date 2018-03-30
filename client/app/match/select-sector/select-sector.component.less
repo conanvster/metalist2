@@ -1,0 +1,52 @@
+@import '../../variables';
+
+:host {
+  width: 100%;
+}
+.match-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.left-bar {
+  float: left;
+  width: 25%;
+  background-color: @white;
+  min-width: 400px;
+}
+.right-bar {
+  float: left;
+  width: 75%;
+  padding: 40px;
+
+}
+
+@media (max-width: 1240px) {
+  .match-wrapper {
+    flex-direction: column;
+  }
+  .left-bar {
+    width: 100%;
+  }
+  .right-bar {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  .left-bar {
+    min-width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .right-bar {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .right-bar {
+    padding: 40px 20px;
+  }
+}

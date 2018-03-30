@@ -1,0 +1,83 @@
+<div class="sector-wrapper">
+  <div class="left-bar">
+    <div>
+      <div *ngIf="!isMobile" class="left-bar-header">
+        <span class="choose-place">{{'match.choosePlace' | translate}}</span>
+        <span class="tribune">Трибуна {{tribune | uppercase}}</span>
+        <span>Сектор {{sector?.name | uppercase}}</span>
+        <div class="circle-tab-container">
+          <circle-tab [rival]="match?.rival" [image]="match?.poster"></circle-tab>
+        </div>
+      </div>
+      <div class="tickets-wrapper">
+        <ng-scrollbar>
+          <table>
+            <ticket-item *ngFor="let ticket of optimisticSeats; let i = index"
+                         [ticket]="ticket"
+                         [index]="i + 1"
+                         [light]="true"
+                         (onClick)="handleDelete($event)"
+            >
+            </ticket-item>
+          </table>
+        </ng-scrollbar>
+        <div>
+          <app-summary></app-summary>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div *ngIf="isCashier; else notCashierBlock">
+        <mat-form-field>
+          <mat-select [(value)]="currentPriceType" >
+            <mat-option *ngFor="let type of priceTypes" [value]="type">{{type.label | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button  class="classic" (click)="pay()">{{'match.print' | translate}}</button>
+      </div>
+
+      <ng-template #notCashierBlock>
+        <button class="classic" routerLink="/checkout">{{'common.execute' | translate}}</button>
+      </ng-template>
+      <div *ngIf="!isMobile" class="match-date-time">
+        <div *ngIf="match?.date" class="match-date">{{match.date | localeDate:'DD MMMM YYYY'}}</div>
+        <div *ngIf="match?.date" class="match-time">{{match.date | localeDate:'HH:mm'}}</div>
+      </div>
+      <back-button [backUrl]="'/match/' + match?.id"></back-button>
+    </div>
+  </div>
+  <div class="right-bar" *ngIf="sectorRows">
+    <div>
+      <div *ngIf="isMobile" class="right-bar-header">
+        <span class="choose-place">{{'match.choosePlace' | translate}}</span>
+        <span class="tribune">Трибуна {{tribune | uppercase}}</span>
+        <span>Сектор {{sector?.name | uppercase}}</span>
+        <div class="circle-tab-container">
+          <circle-tab [rival]="match?.rival" [image]="match?.poster"></circle-tab>
+        </div>
+      </div>
+      <div *ngIf="isMobile">
+        <div *ngIf="match?.date" class="match-date">{{match.date | localeDate:'DD MMMM YYYY'}}</div>
+        <div *ngIf="match?.date" class="match-time">{{match.date | localeDate:'HH:mm'}}</div>
+      </div>
+    </div>
+    <div>
+      <sector-legend></sector-legend>
+      <ul class="seats">
+        <li *ngFor="let row of sectorRows; index as ind" [ngClass]="{'rowdivider': firstUpperRow == row.name}">
+        <span class="number">{{row.name}}</span>
+        <span *ngFor="let seat of makeArrayFromNumber(row.seats); let i = index;"
+              id="s{{sector.name}}r{{row.name}}s{{1+i}}"
+              [class]="getSeatStatus('s'+sector.name+'r'+row.name+'st'+seat)"
+              [class.pointerEventsN]="processedSeat === 's'+sector.name+'r'+row.name+'st'+seat"
+              (click)="toggleSeat({sector: sector.name, row: row.name, seat: seat})"
+              tooltip="<div><div><b>{{tribune}}</b></div><div>Ceктор: <b>{{sector.name}}</b></div>
+                      <div>Ряд: <b>{{row.name}}</b></div><div>{{'common.place' | translate}}: <b>{{seat}}</b>
+                      <div>{{'common.price' | translate}}: <b>{{sectorPrice}}грн</b></div></div>">
+        </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

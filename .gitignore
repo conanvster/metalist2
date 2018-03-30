@@ -2,13 +2,15 @@ node_modules
 .tmp
 .idea
 dist
-npm-debug.log
+npm-debug.log.*
 all.log
 .env
 mongo_data
 server/config/local.env.js
+server/config/environment/development.js
 images/teamLogos/
 !images/teamLogos/.gitkeep
+client/assets/images/teamLogo
 
 # e2e
 /e2e/*.js

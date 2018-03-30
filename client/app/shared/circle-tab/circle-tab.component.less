@@ -1,0 +1,74 @@
+@import '../../variables';
+@import '../../mixins';
+
+.circle-tab-container {
+  position: relative;
+  height: 70px;
+  width: 320px;
+  background: linear-gradient(90deg, @gray, #f5f3f3, @gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 40px;
+  padding: 0 34px;
+}
+
+span {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: @dark-blue;
+  width: 33%;
+  &.rival {
+    .line-clamp(2);
+  }
+}
+
+
+span:nth-child(even) {
+  max-height: 40px;
+  overflow: hidden;
+}
+
+.match-vs {
+  text-align: center;
+  font-size: 45px;
+  font-weight: 300;
+  padding: 10px;
+}
+
+@media (max-width:960px) {
+  span {
+    font-size: 12px;
+  }
+  .match-vs {
+    font-size: 41px;
+  }
+  span:nth-child(even) {
+    max-height: 50px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width:640px) {
+  span {
+    font-size: 10px;
+  }
+  span:nth-child(even) {
+    max-height: 40px;
+    overflow: hidden;
+  }
+  .match-vs {
+    font-size: 37px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .circle-tab-container {
+    height: 60px;
+    margin: 0 32px;
+    padding: 0 32px;
+    width: 220px;
+  }
+}

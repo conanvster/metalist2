@@ -1,0 +1,8 @@
+<mat-tab-group>
+  <mat-tab [label]="'admin.event' | translate">
+    <app-events-summary [eventStatistics]="eventsStatistics"></app-events-summary>
+  </mat-tab>
+  <mat-tab [label]="'admin.day' | translate">
+    <app-days-summary [dayStatistics]="daysStatistics"></app-days-summary>
+  </mat-tab>
+</mat-tab-group>

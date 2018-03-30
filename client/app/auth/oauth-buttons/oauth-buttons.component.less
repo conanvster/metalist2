@@ -1,0 +1,41 @@
+@import '../../variables';
+
+div {
+  display: flex;
+  justify-content: center;
+  .oauth {
+    color: @white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+  .oauth:first-child {
+    background-color: #00426b;
+    border-radius: 50px 0 0 50px;
+  }
+  .oauth:last-child {
+    background-color: #fc2c34;
+    border-radius: 0 50px 50px 0;
+  }
+}
+
+@media (max-width: 960px) {
+  div .oauth {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  div .oauth {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
+

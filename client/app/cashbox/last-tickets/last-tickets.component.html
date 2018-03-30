@@ -1,0 +1,39 @@
+<hr>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" [placeholder]="'placeholder.date' | translate"
+         [ngModel]="date" (dateInput)="addEvent('input', $event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<table class="table table-hover">
+  <thead class="thead-inverse">
+  <tr>
+    <th>Матч</th>
+    <th>Сектор</th>
+    <th>Ряд</th>
+    <th>{{'common.place' | translate}}</th>
+    <th>{{'cashbox.price' | translate}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let stat of statistics;">
+    <td>{{stat.headline}}</td>
+    <td>{{stat.sector}}</td>
+    <td>{{stat.row}}</td>
+    <td>{{stat.seat}}</td>
+    <td>{{stat.amount}}</td>
+    <td>
+      <a class="btn btn-primary btn-sm" (click)="prints(stat)">
+        {{'cashbox.message5' | translate}}
+      </a>
+    </td>
+    <td>
+      <a class="btn btn-primary btn-sm" (click)="removeTicket(stat.id)">
+        {{'cashbox.message6' | translate}}
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>

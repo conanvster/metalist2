@@ -1,11 +1,12 @@
 'use strict';
 
 import Ticket from './ticket.model';
+import Match from '../match/match.model';
 import * as priceSchemaService from '../priceSchema/priceSchema.service';
 import * as matchService from '../match/match.service';
 import * as crypto from 'crypto';
 
-export function createTicket(seat) {
+export function createTicket(seat, freeMessageStatus) {
   return Promise.all([
     priceSchemaService.getSeatPrice(seat),
     matchService.findById(seat.match)
@@ -25,10 +26,11 @@ export function createTicket(seat) {
           row: seat.row,
           seat: seat.seat
         },
-        amount: price,
+        amount: freeMessageStatus ? 0 : price,
         status: 'paid',
         ticketNumber: crypto.randomBytes(20).toString('hex'),
-        reserveDate: new Date()
+        reserveDate: new Date(),
+        freeMessageStatus,
       });
 
       return ticket.save();
@@ -36,9 +38,7 @@ export function createTicket(seat) {
 }
 
 export function getUserTickets(tickets) {
-  return Promise.all(tickets.map(ticketId => {
-    return getTicketById(ticketId);
-  }));
+  return getTicketsById(tickets, {'match.date': { $gte: new Date()}}, {'match.date': -1});
 }
 
 export function getByTicketNumber(ticketNumber) {
@@ -59,4 +59,12 @@ export function randomNumericString(length) {
 
 function getTicketById(ticketId) {
   return Ticket.findById(ticketId);
+}
+
+function getTicketsById(ids, optionParams = {}, sortParams = {}) {
+  const options = Object.assign(optionParams, {'_id': {$in: ids}});
+  return Ticket.find(options) .populate({
+    path: 'match.id', model: Match
+  })
+    .sort(sortParams)
 }

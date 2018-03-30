@@ -1,0 +1,27 @@
+<label>{{'cashbox.message7' | translate}}</label>
+<form class="form">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Seat id</th>
+      <th>Slug</th>
+      <th>Сектор</th>
+      <th>Ряд</th>
+      <th>{{'common.place' | translate}}</th>
+      <th>{{'cashbox.valid' | translate}}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let ticket of seasonTickets">
+      <td> {{ticket._id}}</td>
+      <td> {{ticket.slug}}</td>
+      <td> {{ticket.sector}}</td>
+      <td> {{ticket.row}}</td>
+      <td> {{ticket.seat}}</td>
+      <td> {{ticket.reservedUntil | date}}</td>
+      <td><a class="btn btn-primary btn-sm" (click)="handleDelete(ticket)">{{'admin.delete' | translate}}</a>
+    </tr>
+    </tbody>
+  </table>
+</form>

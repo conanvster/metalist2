@@ -1,0 +1,9 @@
+<div class="match-wrapper">
+  <div class="left-bar">
+    <match-card [match]="match" page="sector"></match-card>
+  </div>
+  <div class="right-bar">
+    <app-stadium [(priceSchema)]="priceSchema" (onSectorSelect)="goToSector($event)"></app-stadium>
+  </div>
+</div>
+

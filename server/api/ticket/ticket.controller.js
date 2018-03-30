@@ -93,7 +93,7 @@ export function useAbonementTicket(req, res) {
           .then((ticket) => {
             ticket.status = 'used';
             return ticket.save()
-            .then(() => res.status(200).json(result));
+            .then(() => res.status(200).json(ticket));
 })
 .catch(handleError(res));
 }
@@ -130,32 +130,23 @@ export function getCountValidTicketsByTribune(req, res, next) {
 }
 
 export function print(req, res, next) {
-  return Ticket.findOne({code: req.params.code, available: false}).exec()
+  return Ticket.findOne({accessCode: req.params.accessCode}).exec()
     .then(handleEntityNotFound(res))
     .then((ticket) => {
       if (ticket) {
 
         barcode.toBuffer({
           bcid: 'code128',       // Barcode type
-          text: ticket.code,     // Text to encode
+          text: ticket.accessCode,     // Text to encode
           scale: 3,               // 3x scaling factor
           height: 10,              // Bar height, in millimeters
-          includetext: true,            // Show human-readable text
+          includetext: false,            // Show human-readable text
           textxalign: 'center',        // Always good to set this
-          textsize: 13               // Font size, in points
         }, function (err, png) {
-          // png is a Buffer. can be saved into file if needed  fs.writeFile(ticket._id + '.png', png)
-
           if (err) {
             return res.status(500).send('Could not generate ticket');
-          } else {
-
-            return res.render('ticket/print', {
-              ticket: ticket,
-              barcodeUri: png.toString('base64'),
-            })
-
           }
+          return res.status(200).json({img: png.toString('base64')});
         });
       }
     })
@@ -201,6 +192,8 @@ function dayStatistics(req, res) {
 }
 
 function eventStatistics(req, res) {
+
+  // return orderService.getStatistics(req.user.id, req.query.date )
   return orderService.getStatistics(req.user.id, req.query.date )
     .then((order) => {
       let tickets = [];
@@ -214,7 +207,8 @@ function eventStatistics(req, res) {
             seat: ticket.seat.seat,
             amount: ticket.amount,
             accessCode: ticket.accessCode,
-            id: ticket.id
+            id: ticket.id,
+            freeMessageStatus: ticket.freeMessageStatus
           })
         })
       }, 0), tickets;

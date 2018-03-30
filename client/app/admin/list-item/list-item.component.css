@@ -1,0 +1,19 @@
+.fa {
+  cursor: pointer;
+}
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.list-group-item span:first-child {
+  float: left;
+}
+
+.list-group-item span:last-child {
+  float: right;
+}
+.list-group-item span .fa:first-child {
+  margin-right: 5px;
+}

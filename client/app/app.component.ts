@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'app';
+
+  constructor(private router: Router, private translate: TranslateService) {
+    translate.addLangs(['ru', 'uk']);
+    translate.setDefaultLang('uk');
+
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/ru|uk/) ? browserLang : 'uk');
+  }
 }

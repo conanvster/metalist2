@@ -1,0 +1,46 @@
+<hr>
+<div class="col-md-4">
+  <label>{{'cashbox.message4' | translate}}</label>
+  <form class="form-inline">
+    <div class="form-group">
+      <input type="text" name="accessCode" class="form-control" [(ngModel)]="accessCode"
+             [placeholder]="'cashbox.barcode' | translate" required=""/>
+    </div>
+    <button type="submit" class="btn btn-default" (click)="regTicket(accessCode)">
+      {{'cashbox.find' | translate}}
+    </button>
+  </form>
+  <form *ngIf="preSellTicket">
+    <div class="form-group">
+      <label>{{'common.place' | translate}}</label>
+      <p>
+        Трибуна {{ preSellTicket.seat.tribune}} Сектор {{ preSellTicket.seat.sector}} Ряд
+        {{preSellTicket.seat.row}} {{'common.place' | translate}} {{ preSellTicket.seat.seat}}
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Матч</label>
+      <p>{{preSellTicket.match.headline}}</p>
+    </div>
+    <div class="form-group">
+      <label>{{'cashbox.price' | translate}}</label>
+      <p>{{preSellTicket.amount}}</p>
+    </div>
+    <div class="form-group">
+      <label>Статус</label>
+      <p>{{preSellTicket.status}}</p>
+    </div>
+    <button *ngIf="preSellTicket.status == 'paid'" class="btn btn-default"
+            (click)="createSeasonTicket()">
+      {{'cashbox.regster' | translate}}
+    </button>
+    <p [hidden]="!seatMessage">{{('message.seat.' + seatMessage) | translate}}</p>
+  </form>
+</div>
+<div class="col-md-8" *ngIf="seasonTickets">
+  <p [hidden]="!abonementMessage">{{('message.abonement.' + abonementMessage) | translate}}</p>
+  <abonement-ticket-list [seasonTickets]="seasonTickets"
+                         (deleteTicket)="handleDeleteTicket($event)"></abonement-ticket-list>
+
+</div>
+

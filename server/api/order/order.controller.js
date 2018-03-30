@@ -60,7 +60,7 @@ export function liqpayRedirect(req, res) {
     .then(params => {
       if (params.status === 'success' || params.status === 'sandbox') {
         req.cookies.cart = '';
-        return res.redirect('/my/tickets');
+        return res.redirect('/tickets');
       } else {
         return res.redirect('/checkout');
       }
@@ -75,8 +75,10 @@ export function liqpayCallback(req, res) {
 
 export function payCashier(req, res) {
   let publicId = req.cookies.cart;
+  const freeMessageStatus = req.body.freeMessageStatus;
   return orderService.findCartByPublicId(publicId) // find currents order
     .then(handleEntityNotFound(res))
+    .then(handleEntityWithoutTicketsAndSeats(res))
     .then(cart => {
       return Promise.all([
         seatService.reserveSeatsAsPaid(cart.seats, publicId), // long 30 min reserv
@@ -84,11 +86,11 @@ export function payCashier(req, res) {
       ])
     })
     .then(([seats, cart]) => {
-      return orderService.createOrderFromCartByCashier(cart, req.user); // new order pending
+      return orderService.createOrderFromCartByCashier(cart, req.user, freeMessageStatus); // new order pending
     })
     .then(order => {
       return Promise.all([
-        orderService.createTicketsByOrder(order),
+        orderService.createTicketsByOrder(order, freeMessageStatus),
         Promise.resolve(order)
       ]);
     })
@@ -122,6 +124,17 @@ function handleEntityNotFound(res) {
     return entity;
   };
 }
+
+function handleEntityWithoutTicketsAndSeats(res) {
+  return function (entity) {
+    if ((entity && entity.seats && !entity.seats.length) && (entity.tickets && !entity.tickets.length)) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;

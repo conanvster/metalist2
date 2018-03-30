@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  align-items: center;
+}
+
+form > div {
+  width: 20%;
+}
+form mat-form-field {
+  width: 25%;
+  margin: 0 5px;
+}
+form.seat-exists mat-form-field {
+  width: 20%;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,45 @@
+.font-size(@size: 18px) {
+  font-size: @size;
+  @media (max-width: 960px) {
+    font-size: @size - 2;
+  }
+  @media (max-width: 720px) {
+    font-size: @size - 4;
+  }
+  @media (max-width: 600px) {
+    font-size: @size - 6;
+  }
+}
+
+.font-size-big(@size: 32px) {
+  font-size: @size;
+  @media (max-width: 960px) {
+    font-size: @size - 4;
+  }
+  @media (max-width: 720px) {
+    font-size: @size - 8;
+  }
+  @media (max-width: 600px) {
+    font-size: @size - 12;
+  }
+}
+
+.font-size-small(@size: 16px) {
+  font-size: @size;
+  @media (max-width: 960px) {
+    font-size: @size - 2;
+  }
+  @media (max-width: 720px) {
+    font-size: @size - 4;
+  }
+}
+
+.line-clamp(@lines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on*/
+  -webkit-line-clamp: @lines;
+  display: -webkit-box;
+}

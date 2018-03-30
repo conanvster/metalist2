@@ -1,3 +1,51 @@
-<p>
-  checkout works!
-</p>
+<div class="wrapper">
+  <span class="ordering">{{'checkout.ordering' | translate}}</span>
+  <div>
+    <span>{{'checkout.message1' | translate}} &nbsp;
+      <a href="https://metalist1925.com/fclub/stadium/rules.php" target="_blank">
+        «{{'checkout.message2' | translate}}»
+      </a>
+    </span>
+  </div>
+  <span *ngIf="!isReservationExpired && cart?.seats?.length && duration">
+    {{'checkout.message3' | translate}}
+    <span style="color: red; font-size: 12pt;"><strong>{{duration?.minutes}}</strong></span> мин
+    <span style="color: red;font-size: 12pt"><strong>{{duration?.seconds}}</strong></span> сек
+    , {{'checkout.message4' | translate}}.<br/>
+    <strong>
+      {{'checkout.message5' | translate}}.
+    </strong>
+    <br/>
+  </span>
+  <p *ngIf="isReservationExpired">
+    <strong>{{'checkout.message6' | translate}}.</strong><br/><br/>
+  </p>
+  <div *ngIf="data?.length && !isReservationExpired; else noTicketBlock">
+    <ng-scrollbar>
+      <ticket-section *ngFor="let d of data" [match]="d.match" [tickets]="d.seats"
+                      (handleClick)="removeSeat($event)" type="checkout">
+        <span>{{'checkout.selectedSeats' | translate}}:</span>
+      </ticket-section>
+      <div class="summary-container">
+        <app-summary></app-summary>
+      </div>
+    </ng-scrollbar>
+    <button *ngIf="isLoggedIn; else notLoggedInBlock" class="classic" (click)="checkout()">
+      {{'checkout.pay' | translate}}
+    </button>
+    <span *ngIf="checkoutMessage" class="checkout-message">{{'message.checkout.' + checkoutMessage | translate}}</span>
+    <ng-template #notLoggedInBlock>
+      <div>
+        <button [routerLink]="['/login']" class="classic">{{'checkout.enter' | translate}}</button>
+      </div>
+      <span>{{'checkout.or' | translate}}</span>
+      <div>
+        <confirm-email-form></confirm-email-form>
+      </div>
+    </ng-template>
+  </div>
+  <ng-template #noTicketBlock>
+    <span class="no-ticket">{{'tickets.message1' | translate}}.</span>
+  </ng-template>
+  <home-button></home-button>
+</div>

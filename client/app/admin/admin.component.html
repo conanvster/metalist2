@@ -1,3 +1,11 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li routerLinkActive="active" routerLink="ticketsStatistic"><a>Статистика</a></li>
+    <li routerLinkActive="active" routerLink="matchEditor"><a>{{'admin.matches' | translate}}</a></li>
+    <li routerLinkActive="active" routerLink="adminUsers"><a>{{'admin.users' | translate}}</a></li>
+    <li routerLinkActive="active" routerLink="seasonTicket"><a>{{'admin.seasonTickets' | translate}}</a></li>
+    <li routerLinkActive="active" routerLink="priceSchema"><a>{{'admin.priceSchema' | translate}}</a></li>
+    <li routerLinkActive="active" routerLink="orderDetails"><a>{{'admin.orderDetails' | translate}}</a></li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

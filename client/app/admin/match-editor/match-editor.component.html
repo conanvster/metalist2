@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <blockquote *ngIf="message">
+            <p>{{('message.matchEditor.' + message) | translate}}</p>
+        </blockquote>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <match-list [matches]="nextMatches" type="next" (editMatch)="setMatchToEdit($event)">
+                <label>{{'admin.matchList' | translate}}</label>
+            </match-list>
+            <button class="btn btn-default" (click)="setMatchToEdit()">
+              {{'admin.addNewMatch' | translate}}
+            </button>
+        </div>
+        <div class="col-md-4">
+            <edit-match *ngIf="matchToEdit"
+                        [match]="matchToEdit" (save)="saveMatch($event)" (closeMatch)="closeForm()"></edit-match>
+        </div>
+        <div class="col-md-4">
+            <delete-item (deleteItem)="deleteMatch($event)">
+              <label>{{'admin.delete' | translate}} матч</label>
+            </delete-item>
+            <hr>
+
+            <match-list [matches]="prevMatches" type="prev" (deleteMatch)="deleteMatch($event)">
+                <label>{{'admin.lastMatches' | translate}}</label>
+            </match-list>
+        </div>
+    </div>
+</div>
+

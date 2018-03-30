@@ -1,163 +1,57 @@
-/*NEW LOGO*/
-
-@bgForLogo: url(../../assets/images/mxtick.jpg);
-
-@media all and (orientation: portrait) {
-  .topBigLogo {
-    background: @bgForLogo;
-    min-width: 280px;
-    max-width: 900px;
-    height: 150px;
-    line-height: 150px;
-    background-size: cover;
-    text-align: center;
-& .metalistLogo {
-    height: 60%;
-    vertical-align: middle;
-  }
-}
-}
-
-@media all and (orientation: landscape) {
-  .topBigLogo {
-    background: @bgForLogo;
-    max-width: 930px;
-    min-width: 530px;
-    height: 260px;
-    line-height: 260px;
-    background-size: cover;
-    text-align: center;
-& .metalistLogo {
-    height: 60%;
-    vertical-align: middle;
-  }
-}
-}
-
-.metalistLogo {
-  width: auto;
-}
-
-.metalistLogo:hover {
-  -webkit-filter: drop-shadow(0px 8px 8 pxx rgba(0, 0, 0, .9));
-  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, .9));
-  -moz-transform: scale(1.02);
-  -webkit-transform: scale(1.02);
-  transform: scale(1.02);
-  transition: 0.3s;
-  -moz-transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-}
-
-/*NEW LOGO*/
-
-.page-header {
-  text-align: center;
-}
-
-.teamLogos img {
-  padding: 15px 10px 10px 10px;
-  margin: 0 0 0 0;
-  width: auto;
-  height: 117px;
-}
-
-.panel-title p {
-  font-size: large;
-}
-
-.text-center img {
-  max-width: 100%;
-  min-width: 200px;
-  height: auto;
-  text-align: center;
-}
-
-.matchList li {
-  vertical-align: top;
-  border: solid 6px white;
-  box-shadow: 0 0 2px grey;
-  border-radius: 0;
-  text-align: center;
-  display: inline-block;
-  list-style-type: none;
-  background-position: center center;
-  background-repeat: no-repeat;
+@bgForLogo: url(../../assets/images/main-background-min.png);
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: @bgForLogo;
+  background-position: center;
   background-size: cover;
-  background-image: url("./../../assets/images/bgmatches.jpg");
-  margin: 0 10px 20px 10px;
-  transition: 0.3s;
-  -moz-transition: all 0.3s;
-  -webkit-transition: all 0.3s
 }
 
-.matchList li:hover {
-  box-shadow: 0 0 20px grey;
-
+.inner-wrapper {
+  padding: 50px 0;
 }
 
-.panel {
-  max-width: 250px;
-  min-width: 100px;
-  width: 250px;
-  height: 250px;
-  cursor: pointer;
+swiper {
+  width: 1520px;
+  height: auto;
+  .swiper-wrapper.centered {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media(max-width: 1560px) {
+    width: 1420px;
+  }
+
+  @media(max-width: 1460px) {
+    width: 1220px;
+  }
+  @media(max-width: 1260px) {
+    width: 1020px;
+  }
+  @media(max-width: 1060px) {
+    width: 820px;
+  }
 }
 
-.panel a:hover {
-  text-decoration: none;
+@media(max-width: 860px) {
+  .match-list {
+    padding: 20px;
+  }
+  .inner-wrapper {
+    padding: 40px 0;
+  }
 }
 
-a.link {
-  color: #141414;
+@media(max-width: 600px) {
+  .inner-wrapper {
+    padding: 30px 0;
+  }
 }
 
-a.link:hover{
-  color: #5395ff;
-}
-
-.matches {
-  text-align: center;
-}
-
-.commandsNames h4 {
-  border-left: solid 5px rgba(0, 0, 0, 0);
-  border-right: solid 5px rgba(0, 0, 0, 0);
-  width: 245px;
-  white-space: nowrap; /* Запрещаем перенос строк */
-  overflow: hidden; /* Обрезаем все, что не помещается в область */
-  text-overflow: ellipsis; /* Добавляем многоточие */
-  margin: 15px 0 0 0;
-  font-size: 1em;
-  color: white;
-}
-
-.matchDate p {
-  margin-top: 0.1em; /* Отступ сверху */
-  margin-bottom: -0.4em; /* Отступ снизу */
-  font-size: 1.8em;
-  color: white;
-}
-
-.btn-link {
-  margin-top: -0.9em; /* Отступ сверху */
-  color: #262626;
-  font-size: 1em;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0;
-}
-
-.bgTicket {
-  width: 250px;
-  height: 250px;
-}
-
-.buyTicket {
-  text-decoration: underline;
-  position: absolute;
-  margin-top: 215px;
-  width: 250px;
-  height: 20px;
-  font-weight: bold;
+@media(max-width: 480px) {
+  .inner-wrapper {
+    padding: 20px 0;
+  }
 }

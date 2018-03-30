@@ -1,0 +1,16 @@
+<div class="col-xs-12 matchData" [hidden]="!matchDetails">
+  <div class="col-md-4 col-xs-12">
+    <span>{{ matchDetails?.date | localeDate:'DD MMMM YYYY' }}</span>
+    <span>{{ matchDetails?.date| localeDate:'HH:mm' }}</span>
+  </div>
+  <div class="col-md-4 col-xs-12">
+    <span class="col-md-12">{{'common.metalist' | translate}} 1925</span>
+    <span class="">-</span>
+    <span class="col-md-12">{{ matchDetails?.rival }}</span>
+  </div>
+  <div class="col-md-4 col-xs-12" *ngIf="stadiumName == 'metalist'">
+    <div class="col-md-12 col-xs-6">{{'match.stadiumMetalist' | translate}}, </div>
+    <div class="col-md-12 col-xs-6">{{'match.address' | translate}}, </div>
+    <div class="col-md-12 col-xs-12"><i class="fa fa-subway"></i>&nbsp;{{'match.subway' | translate}}</div>
+  </div>
+</div>

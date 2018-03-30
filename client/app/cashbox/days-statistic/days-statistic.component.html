@@ -1,0 +1,29 @@
+<hr>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" [placeholder]="'placeholder.date' | translate"
+         (dateInput)="addEvent('input', $event)" [ngModel]="date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<table class="table table-hover">
+  <thead class="thead-inverse">
+  <tr>
+    <th>{{'cashbox.price' | translate}}</th>
+    <th>{{'common.quantity' | translate}}</th>
+    <th>{{'common.amount' | translate}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!--<tr ng-repeat="stat in statistics | orderBy: '-price'">-->
+  <tr *ngFor="let stat of statistics;">
+    <td>{{stat.price}}</td>
+    <td>{{stat.count}}</td>
+    <td>{{stat.sum}}</td>
+  </tr>
+  <tr *ngIf="isStatistics()">
+    <td></td>
+    <td>{{'common.amount' | translate}}</td>
+    <td> {{getAmount()}}</td>
+  </tr>
+  </tbody>
+</table>

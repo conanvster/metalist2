@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <shared-form [type]="'register'"
+               (submit)="register($event)">
+    <span class="title">{{'auth.registration' | translate}}</span>
+    <span *ngIf="error === 'fail'; else elseBlock" class="error">
+      {{('message.login.' + error) | translate}}
+    </span>
+    <ng-template #elseBlock>
+      <span class="error">{{error}}</span>
+    </ng-template>
+    <span class="button-title"> {{'auth.register' | translate}} </span>
+  </shared-form>
+  <oauth-buttons></oauth-buttons>
+  <span class="registration">
+    {{'auth.haveAccount' | translate}}?
+    <a routerLink="/login">{{"auth.entrance" | translate | uppercase}}</a>
+  </span>
+  <home-button></home-button>
+</div>

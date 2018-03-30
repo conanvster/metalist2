@@ -1,0 +1,19 @@
+<div class="color-schemas" *ngIf="colorSchema">
+  <div class="schema-container" *ngFor="let colorPrice of colorSchema">
+    <div class="color">
+      <mat-icon [ngStyle]="{'color': colorPrice.color}">lens</mat-icon>
+      <mat-select placeholder="Color" [(ngModel)]="colorPrice.color">
+        <mat-option *ngFor="let color of colors" [value]="color.color">
+          <span>{{color.colorName}}</span>
+        </mat-option>
+      </mat-select>
+    </div>
+    <div class="price">
+      <span>= {{colorPrice.price}}</span>
+    </div>
+  </div>
+</div>
+<button class="btn btn-default" (click)="edit(colorSchema)"
+        [style.visibility]="isColorChanged() ? 'visible' : 'hidden'">
+  {{'admin.applyColor' | translate}}
+</button>

@@ -1,0 +1,75 @@
+@import "../../variables";
+@import "../../mixins";
+
+.legend-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  span:nth-child(even) {
+    .font-size-small;
+    font-weight: 400;
+    color: @dark-blue;
+    padding-right: 2em;
+  }
+  .availableSeat,
+  .soldSeat,
+  .blockedSeat {
+    border-radius: 6px;
+    max-width: 20px;
+    height: 14px;
+    cursor: pointer;
+    display: inline-block;
+    width: 1.5%;
+    margin-right: 0.15%;
+  }
+
+  @media (max-width: 1640px) {
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      height: 14px;
+      border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 1240px) {
+    margin-bottom: 40px;
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      height: 12px;
+      border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    margin-bottom: 30px;
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      height: 8px;
+      margin: 0 1px 0 0;
+      border-radius: 2px;
+    }
+    span:nth-child(even) {
+      padding-right: 1em;
+    }
+  }
+
+  @media (max-width: 640px) {
+    margin-bottom: 20px;
+    .availableSeat,
+    .soldSeat,
+    .blockedSeat {
+      width: 1.4%;
+      height: 8px;
+      border-radius: 1px;
+
+    }
+    span:nth-child(even) {
+      padding-right: 0;
+      flex-basis: 98%;
+    }
+  }
+}

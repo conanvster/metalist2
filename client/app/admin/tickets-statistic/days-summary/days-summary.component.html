@@ -1,0 +1,25 @@
+<hr>
+<table class="table table-hover">
+  <thead class="thead-inverse">
+  <tr>
+    <th>Дата</th>
+    <th>{{'common.quantity' | translate}}</th>
+    <th>{{'admin.userType' | translate}}</th>
+    <th>{{'common.amount' | translate}}</th>
+    <th>{{'admin.priceDetails' | translate}}</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let stat of dayStatistics">
+  <tr *ngFor="let day of stat">
+    <td>{{day.date | date: 'dd-MM-yyyy'}}</td>
+    <td>{{day.cashier}}</td>
+    <td>{{day.count}}</td>
+    <td>{{day.sum}}</td>
+    <td>
+      <ul>
+        <li *ngFor="let detail of sortByPrice(day.details)">{{detail.price}} - {{detail.count}} шт.</li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <form name="form" class="form" [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <div>
+      <input [placeholder]="'placeholder.email' | translate"
+             type="email"
+             name="email"
+             id="email"
+             formControlName="email">
+      <div class="errors">
+        <input-invalid-email-error
+          *ngIf="getInputError('email').includes('email') && !getInputError('email').includes('required')">
+        </input-invalid-email-error>
+        <input-required-error *ngIf="getInputError('email').includes('required')"
+                              [field]="'placeholder.email' | translate">
+        </input-required-error>
+      </div>
+      <div>
+        <span class="error" *ngIf="confirmationMessage === 'alreadyTaken'; else confirmationMessageBlock;">
+          {{('message.login.' + confirmationMessage) | translate}}
+        </span>
+        <ng-template #confirmationMessageBlock>
+          <span class="confirmation-email-notification">{{confirmationMessage | translate}}</span>
+        </ng-template>
+      </div>
+    </div>
+    <div *ngIf="emailValue">
+      <input [placeholder]="'placeholder.password' | translate"
+             type="password"
+             name="password"
+             id="password"
+             formControlName="password">
+      <div class="errors">
+        <input-required-error *ngIf="getInputError('password').includes('required')"
+                              [field]="'placeholder.password' | translate">
+        </input-required-error>
+      </div>
+      <div>
+        <span class="error" *ngIf="loginMessage && loginMessage === 'fail'; else loginElseBlock">
+        {{('message.login.' + loginMessage) | translate}}
+      </span>
+        <ng-template #loginElseBlock>
+          <span class="error">{{loginMessage | translate}}</span>
+        </ng-template>
+      </div>
+    </div>
+    <button type="submit" class="classic">
+      <span class="button-title"> {{(emailValue ? 'checkout.enter' : 'auth.confirmEmail') | translate}} </span>
+    </button>
+  </form>
+</div>

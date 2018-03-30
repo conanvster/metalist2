@@ -1,0 +1,86 @@
+.wrapper {
+  margin: 0 auto;
+}
+@import '../../variables';
+
+
+:host /deep/ .classic {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.error {
+  text-align: center;
+  height: 20px;
+  padding: 0 5px;
+  color: #999999;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.confirmation-email-notification {
+  text-align: center;
+  height: 20px;
+  padding: 0 5px;
+  color: #999999;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.error {
+  height: 20px;
+}
+
+div * {
+  width: 100%;
+}
+
+input {
+  padding: 14px;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.09);
+  border: 1px solid @input-border;
+  background-color: @white;
+  color: @input-text;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: @gray-placeholder;
+  }
+}
+div input[name='email'] {
+  margin: 40px 0 0;
+}
+div input[name='password'] {
+  margin: 10px 0 0;
+}
+
+@media (max-width: 960px) {
+  input {
+    font-size: 20px;
+  }
+
+  .errors {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  input {
+    font-size: 16px;
+  }
+  .errors {
+    font-size: 12px;
+  }
+
+}
+
+.errors {
+  height: 20px;
+  text-align: left;
+  padding: 0 5px;
+  color: #999999;
+  font-size: 14px;
+}
+

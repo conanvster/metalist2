@@ -1,8 +1,8 @@
 //@import '~bootstrap/less/bootstrap.less';
 //@import '~bootstrap-social/bootstrap-social.less';
 //@import '~font-awesome/less/font-awesome.less';
-
-//@icon-font-path: '~bootstrap/fonts/';
+@import 'variables';
+@icon-font-path: '~bootstrap/fonts/';
 //@fa-font-path: '~font-awesome/fonts';
 
 /**
@@ -16,32 +16,18 @@
   padding: 0.2em 0;
 }
 
-@media (min-width: 1200px) {
-  .container {
-    max-width: 960px;
-  }
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* inject:less */
-//@import '404/404';
-//@import 'admin/admin';
-//@import 'bootstraptheme';
-//@import 'cart/summary/cart-summary';
-//@import 'checkout/checkout';
-//@import 'home/home.component';
-//@import 'match/match';
-//@import 'navpanel/breadcrumbsland';
-//@import 'navpanel/breadcrumbslib';
-//@import 'navpanel/breadcrumbsport';
-//@import 'sector/sector';
-//@import 'footer/footer';
-//@import 'modal/modal';
-//@import 'navbar/navbar';
-//@import 'oauth-buttons/oauth-buttons';
-/* endinject */
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 
-@media (min-width: 1200px) {
-  .container{
-    max-width: 960px;
-  }
+* {
+  font-family: 'Open Sans', sans-serif;
 }

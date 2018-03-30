@@ -1,0 +1,17 @@
+<div class="col-md-12">
+    <div *ngIf="currentTribune && !currentSector">
+        <h4>{{'admin.tribunePrice' | translate}}: {{currentTribune.name}}</h4>
+        <mat-form-field>
+            <input matInput [(ngModel)]="currentTribune.price" type="number" min="0" max="1500">
+        </mat-form-field>
+    </div>
+    <div *ngIf="currentSector">
+        <h4>Цена на сектор: № {{currentSector.name}}</h4>
+        <mat-form-field>
+            <input matInput [(ngModel)]="currentSector.price" type="number" min="0" max="1500">
+        </mat-form-field>
+    </div>
+    <button *ngIf="isPriceChanged()" class="btn btn-default" (click)="clickApply()">
+      {{'admin.applyPrice' | translate}}
+    </button>
+</div>

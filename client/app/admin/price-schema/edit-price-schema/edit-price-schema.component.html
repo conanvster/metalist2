@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-4">
+      <form class="form-container" [formGroup]="priceSchemaForm">
+        <mat-form-field *ngIf="priceSchema?.id">
+          <input matInput placeholder="Id" [value]="priceSchema.id" disabled>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [placeholder]="'placeholder.stadium' | translate" formControlName="stadiumName"
+                 [(ngModel)]="priceSchema.stadiumName">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [placeholder]="'placeholder.name' | translate"
+                 formControlName="name"
+                 [(ngModel)]="priceSchema.name"
+          >
+          <mat-error *ngIf="priceSchemaForm.get('name').errors?.required && priceSchemaForm.get('name').touched">
+            <input-required-error field="Cхема"></input-required-error>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col-md-8" *ngIf="priceSchema.colorSchema">
+      <app-color-schema-editor
+                               [colorSchema]="priceSchema.colorSchema"
+                               [colors]="colors"
+                               (onEdit)="changeColor($event)"></app-color-schema-editor>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <app-stadium-with-tribunes [priceSchema]="priceSchema"
+                               (onClickApply)="clickApply($event)"></app-stadium-with-tribunes>
+    <button class="btn btn-success btn-lg btn-block" (click)="updateSchema()"
+            *ngIf="isPriceSchemaChanged()" [disabled]="!priceSchemaForm.valid">
+      {{'admin.savePriceSchema' | translate}}
+    </button>
+  </div>
+</div>

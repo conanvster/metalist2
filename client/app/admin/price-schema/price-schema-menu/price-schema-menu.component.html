@@ -1,0 +1,13 @@
+<div class="menu-price-schema">
+  <label>{{'admin.schemaList' | translate}}</label>
+  <div class="list-group">
+    <list-item *ngFor="let schema of priceSchemas"
+               [headline]="schema.priceSchema.name + ' : ' + schema.priceSchema.stadiumName"
+               [edit]="true" (editItem)="selectSchema(schema)"
+               [delete]="false"></list-item>
+  </div>
+  <button class="btn btn-default" (click)="createSchema({stadiumName: 'metalist', name: ''})">
+    {{'admin.new' | translate}} прайс схема
+  </button>
+</div>
+

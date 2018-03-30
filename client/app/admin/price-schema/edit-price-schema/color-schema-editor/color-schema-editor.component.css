@@ -1,0 +1,27 @@
+.color-schemas {
+  display: flex;
+  flex-wrap: wrap;
+}
+.schema-container {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+.color {
+  display: flex;
+  flex-basis: 70%;
+}
+.price {
+  margin: 5px;
+  flex-basis: 25%;
+}
+.price span {
+  white-space: nowrap;
+}
+
+button {
+  margin: 5px 10px 15px 10px;
+  width: auto;
+}

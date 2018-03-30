@@ -1,0 +1,35 @@
+img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    max-height: 150px;
+}
+.example-container > * {
+    width: 100%;
+}
+
+.example-container > button {
+    width: auto;
+}
+
+.example-container > .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-time {
+  display: flex;
+}
+
+.date-time .mat-form-field {
+  width: 48%;
+}
+
+.date-time .mat-form-field:nth-child(1) {
+  margin-right: 4%;
+}
+
+.date-time .mat-form-field:nth-child(1) input {
+  height: 21px;
+  margin-right: 5px;
+}

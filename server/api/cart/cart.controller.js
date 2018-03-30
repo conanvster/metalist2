@@ -5,6 +5,7 @@ import moment from 'moment';
 import { RESERVE } from '../seat/seat.constants';
 import * as seatService from '../seat/seat.service';
 import * as orderService from '../order/order.service';
+import * as seasonTicketService from '../seasonTicket/seasonTicket.service';
 import * as log4js from 'log4js';
 import * as crypto  from 'crypto';
 
@@ -49,9 +50,10 @@ export function addSeatToCart(req, res) {
 
   Promise.all([
     orderService.findCartByPublicId(publicId),
-    seatService.findForMatchBySlug(slug, matchId)
+    seatService.findForMatchBySlug(slug, matchId),
+    seasonTicketService.findBySlug(slug),
   ])
-    .then(([cart, seat]) => {
+    .then(([cart, seat, seasonTicket]) => {
       if (!cart) {
         throw new Error('Cart not found');
       }
@@ -59,6 +61,9 @@ export function addSeatToCart(req, res) {
         throw new Error('Seat not found');
       }
       if (seat.isReserved) {
+        return res.status(409).end();
+      }
+      if (seasonTicket && seasonTicket.reservedUntil > new Date()) {
         return res.status(409).end();
       }
       return seatService.reserveSeatAsReserve(seat, reserveDate, cart.publicId)
@@ -128,6 +133,5 @@ function handleError(res, statusCode) {
 
 function deleteReserveSeatFromCart(cart, slug, matchId) {
   cart.seats = cart.seats.filter( seat => !(seat.slug === slug && seat.match.id === matchId) );
-
   return cart.save();
 }

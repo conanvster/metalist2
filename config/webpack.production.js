@@ -68,7 +68,7 @@ const postcssPlugins = function () {
 
 module.exports = webpackMerge(commonConfig, {
   "output": {
-    "path": path.join(process.cwd(), "dist"),
+    "path": path.join(process.cwd(), "dist/client"),
     "filename": "[name].[chunkhash:20].bundle.js",
     "chunkFilename": "[id].[chunkhash:20].chunk.js",
     "crossOriginLoading": false

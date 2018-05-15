@@ -24,7 +24,7 @@ export function getStatistics(userId, date) {
 }
 
 export function getEventsStatistics() {
-  let day = moment().subtract(30, 'days');
+  let day = moment().subtract(45, 'days');
   let filtredTickets = [];
   return Order.find({status: 'paid', created: {$gte: day.startOf('day').format('YYYY-MM-DD HH:mm:ss')}})
     .populate('tickets')
